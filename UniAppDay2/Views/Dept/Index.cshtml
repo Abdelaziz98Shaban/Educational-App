@@ -1,0 +1,54 @@
+﻿@model List<Department>
+@{
+    Layout = "_MyLayout";
+}
+
+<table class="table table-bordered table-hover " width="50%">
+    <tr>
+        <th>
+            Department Name
+        </th>
+        <th>
+            Manager Name
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.deptName</td>
+            <td>@item.mangerName</td>
+            <td class="text-center">
+               <input type="button"  onclick="AjaxCall(@item.Id)" value="Show Instructors" class="btn btn-primary"/>
+                           <a href="\Dept\Edit\@item.Id" class="btn btn-primary" style="padding:5px 50px">Edit</a>
+                <a type="submit" href="\Dept\Delete\@item.Id" class="btn btn-danger" style=" padding:5px 50px"
+               onclick="return confirm('Are you sure you want to delete @item.deptName')">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="\Dept\Add" class="btn btn-outline-primary text-center" style="width:20%"> Add New Department</a>
+
+<br /> <br />
+<div id="div1">
+
+</div>
+
+<script>
+        function AjaxCall(id){
+            $.ajax(
+                {
+                    url  : "/instructor/GetDepartmentInstructors",
+                    data :{"deptId":id},
+                    success: function(result){
+                                $("#div1").html(result);
+                        }
+                }
+                );
+             }
+    </script>
+      <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+

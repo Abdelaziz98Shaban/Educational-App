@@ -1,0 +1,26 @@
+﻿@model Instructor
+
+@if(Model !=null)
+{
+<div class="col-lg-3 col-md-6  text-center">
+
+    <div class="card mb-3">
+        <img src="\images\@Model.insImage" class="card-img-top" alt="..." style="max-width:100%; height:15vw ; object-fit:contain" />
+        <div class="card-body">
+            <h5 class="card-title text-center" style="color: #c99e68">
+                @Model.insName
+            </h5>
+            <p>@Model.insAddress</p>
+            <p>@Model.insSalary</p>
+            <a href="\instructor\GetInstructor\@Model.Id" class="btn btn-primary" style="width:100%; padding:5px 50px">Details</a>
+            <br> <br>
+            <a href="\instructor\Edit\@Model.Id" class="btn btn-primary" style="width:100%; padding:5px 50px">Edit</a>
+            <br> <br>
+            <a type="submit" href="\instructor\Delete\@Model.Id" class="btn btn-danger" style="width:100%; padding:5px 50px"
+               onclick="return confirm('Are you sure you want to delete @Model.insName')">Delete</a>
+        </div>
+    </div>
+</div>
+}
+
+<h2>This Course hasn't instructor yet</h2>

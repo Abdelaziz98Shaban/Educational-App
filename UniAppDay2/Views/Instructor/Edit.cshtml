@@ -1,0 +1,73 @@
+﻿@model Instructor
+
+<form asp-action="SaveEdit" asp-controller="instructor" asp-route-id="@Model.Id">
+     <input asp-for="Id" type="hidden"  class="form-control" />
+
+    <partial name="_InstructorForm" model="@Model" />
+     <div> <input type="submit" value="Save" class="btn btn-outline-success" />  </div>
+
+</form>
+
+@*
+    <form action="\instructor\SaveEdit\@Model.Id" method="post">
+
+    <div>
+    <label for="insName">Name</label>
+    <input type="text" name="insName" id="insName" class="form-control" value="@Model.insName" />
+    </div>
+    <div>
+    <label for="insImage">Image</label>
+    <input type="text" name="insImage" id="insimage" class="form-control" value="@Model.insImage" />
+    </div>
+    <div>
+    <label for="insAddress">Address</label>
+    <input type="text" name="insAddress" id="insAddress" class="form-control" value="@Model.insAddress" />
+    </div>
+    <div>
+    <label for="insSalary">Salary</label>
+    <input type="number" name="insSalary" id="inssalary" class="form-control" value="@Model.insSalary" />
+    </div>
+    <div>
+    <label for="deptId">Department</label>
+    <select name="deptId" id="deptId" class="form-control">
+
+    @foreach (var item in ViewBag.depts)
+    {
+    if (@item.Id == Model.deptId)
+    {
+
+    <option value="@item.Id" selected>@item.deptName</option>
+
+    }
+    else
+    {
+    <option value="@item.Id">@item.deptName</option>
+    }
+    }
+
+    </select>
+    </div>
+    <div>
+    <label for="courseId">Course</label>
+    <select name="courseId" id="courseId" class="form-control">
+
+    @foreach (var item in ViewBag.course)
+    {
+    if (@item.id == Model.courseId)
+    {
+
+    <option value="@item.id" selected>@item.name</option>
+
+    }
+    else
+    {
+    <option value="@item.id">@item.name</option>
+    }
+    }
+
+    </select>
+    </div>
+
+    <br />
+    <div> <input type="submit" value="Save" class="btn btn-outline-success" />  </div>
+    </form>*@

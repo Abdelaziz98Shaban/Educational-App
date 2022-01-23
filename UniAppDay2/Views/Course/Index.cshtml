@@ -1,0 +1,64 @@
+﻿@model List<Course>
+@{
+    Layout = "_MyLayout";
+}
+
+<table class="table table-bordered table-hover " width="50%">
+    <tr>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Degree
+        </th>
+        <th>
+            Minimun Degree
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.name</td>
+            <td>@item.degree</td>
+            <td>@item.minDegree</td>
+            <td class="text-center">
+
+               <input type="button"  onclick="AjaxCall(@item.id)" value="Show Instructor" class="btn btn-primary"/>
+                           <a href="\Course\Edit\@item.id" class="btn btn-primary" style="padding:5px 50px">Edit</a>
+                <a type="submit" href="\Course\Delete\@item.id" class="btn btn-danger" style=" padding:5px 50px"
+               onclick="return confirm('Are you sure you want to delete @item.name')">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="\Course\Add" class="btn btn-outline-primary text-center" style="width:20%"> Add New Course</a>
+
+<br /> <br />
+
+<div class="g-4">
+<h2>Course Instructor</h2>
+<div id="div1">
+
+</div>
+</div>
+
+
+<script>
+        function AjaxCall(id){
+            $.ajax(
+                {
+                    url  : "/instructor/GetCourseInstructor",
+                    data :{"courseId":id},
+                    success: function(result){
+                                $("#div1").html(result);
+                        }
+                }
+                );
+             }
+    </script>
+      <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+

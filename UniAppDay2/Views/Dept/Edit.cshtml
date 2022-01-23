@@ -1,0 +1,25 @@
+﻿@model Department
+<form action="\Dept\SaveEdit"  method="post">
+         <input asp-for="Id" type="hidden"  class="form-control" />
+
+     <div  class="mb-3"> 
+           <label asp-for="deptName"></label>
+            <input asp-for="deptName"  class="form-control" />
+            <span  class="text-danger" asp-validation-for="deptName"></span>
+      </div> 
+      <div  class="mb-3"> 
+           <label asp-for="mangerName"></label>
+            <input asp-for="mangerName"  class="form-control" />
+            <span  class="text-danger" asp-validation-for="mangerName"></span>
+      </div> 
+    
+    <br />      
+    <div> <input type="submit" value="Save" class="btn btn-outline-primary" />  </div>
+
+</form>
+
+
+        
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

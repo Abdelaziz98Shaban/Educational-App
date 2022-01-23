@@ -1,0 +1,48 @@
+﻿@model Course
+@{
+    SelectList departments;
+    if (Model != null)
+    {
+        departments = new SelectList(ViewBag.depts, "Id", "deptName", Model.deptId);
+    }
+    else
+    {
+        departments = new SelectList(ViewBag.depts, "Id", "deptName");
+
+    }
+}
+
+<form action="\Course\SaveAdd" method="post">
+    <div class="mb-3">
+        <label asp-for="name"></label>
+        <input asp-for="name" class="form-control" />
+        <span class="text-danger" asp-validation-for="name"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="degree"></label>
+        <input asp-for="degree" class="form-control" />
+        <span class="text-danger" asp-validation-for="degree"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="minDegree"></label>
+        <input asp-for="minDegree" class="form-control" />
+        <span class="text-danger" asp-validation-for="minDegree"></span>
+    </div>
+
+
+    <div>
+        <label asp-for="deptId"></label>
+        <select asp-for="deptId" asp-items="departments" class="form-control">
+        </select>
+    </div>
+    <br />
+    <div> <input type="submit" value="Add" class="btn btn-outline-primary" />  </div>
+</form>
+
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

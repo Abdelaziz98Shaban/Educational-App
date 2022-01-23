@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_MyLayout";
+}
+
+
+@model List<Instructor>
+
+
+<div class="container-fluid ">
+<div class="row">
+@foreach (var item in Model)
+{
+    <partial name="_InstructorCard" model="@item" />
+}
+
+<div class="text-center m-5" >
+<a href="\instructor\Add" class="btn btn-outline-primary"> Add New Instructor</a>
+</div>
+</div> 
+</div>

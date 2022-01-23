@@ -1,0 +1,86 @@
+﻿
+@model Instructor
+
+@{
+    SelectList instructors;
+    if(Model !=null)
+    {
+        instructors = new SelectList(ViewBag.depts, "Id", "deptName", Model.deptId);
+    }
+    else
+    {
+        instructors = new SelectList(ViewBag.depts, "Id", "deptName");
+
+    }
+
+    SelectList courses;
+
+    if (Model != null)
+    {
+        courses = new SelectList(ViewBag.course, "id", "name", Model.courseId); 
+    }
+
+    else {
+        courses = new SelectList(ViewBag.course, "id", "name"); 
+    
+    }
+}
+
+    <div  class="mb-3"> 
+           <label asp-for="insName"></label>
+            <input asp-for="insName"  class="form-control" />
+            <span  class="text-danger" asp-validation-for="insName"></span>
+
+      </div>      
+      <div class="form-group">
+        <label asp-for="insImage"></label>
+    <div class="custom-file ">
+        <input type="file" class="custom-file-input" asp-for="insImage" >
+        <label class="custom-file-label" asp-for="insImage">Choose Image</label>
+        <span class="text-danger" asp-validation-for="insImage"></span>
+    </div>
+
+      </div>
+
+      <div> 
+           <label asp-for="insAddress"></label>
+            <input asp-for="insAddress"  class="form-control" />
+            <span class="text-danger" asp-validation-for="insAddress"></span>
+
+      </div>        
+      <div> 
+           <label asp-for="insSalary"></label>
+            <input asp-for="insSalary"  class="form-control" />
+            <span  class="text-danger" asp-validation-for="insSalary"></span>
+
+      </div>           
+
+       <div>
+        <label asp-for="deptId" ></label>
+        <select asp-for="deptId" asp-items="instructors" class="form-control">
+        </select>
+      </div>  
+    
+    <div>
+        <label asp-for="courseId" ></label>
+        <select asp-for="courseId" asp-items="courses" class="form-control">
+        </select>
+    </div>
+       
+        <br />
+
+
+
+
+        
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
